@@ -1,7 +1,7 @@
 pipeline {
   
   agent any
-  timeout(time: 3, activity: true, unit: 'MINUTES'){
+  
     
   stages {
     stage('stage1') {
@@ -17,4 +17,4 @@ pipeline {
     demo = '1'
   }
 }
-}
+
