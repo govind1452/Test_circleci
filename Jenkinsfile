@@ -1,9 +1,12 @@
 pipeline {
+  
   agent any
+  timeout(time: 3, activity: true, unit: 'MINUTES'){
+    
   stages {
     stage('stage1') {
       steps {
-        timeout(time: 3, activity: true, unit: 'MINUTES')
+        
         echo '"learning. $BUILD_NUMBER AND $demo"'
         sh 'echo " $BUID_NUMBER and $demo "'
       }
@@ -13,4 +16,5 @@ pipeline {
   environment {
     demo = '1'
   }
+}
 }
