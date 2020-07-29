@@ -5,7 +5,7 @@ pipeline {
       steps {
         echo '"learning. $BUILD_NUMBER AND $demo"'
         sh 'echo " $BUID_NUMBER and $demo "'
-        timeout(time: 3, activity: true)
+        timeout(time: 3, activity: true, unit: 'MINUTES')
       }
     }
 
