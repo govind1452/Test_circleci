@@ -6,7 +6,6 @@ orbs:
 jobs:
   build:
     steps:
-      - run: mvn dependency:go-offline
       - run:
           name: maven build
           command: |
