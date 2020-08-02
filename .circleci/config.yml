@@ -8,5 +8,4 @@ jobs:
     - run:
         name: maven build
         command: |
-          mvn clean
-          mvn compile
+          mvn clean install
