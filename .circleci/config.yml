@@ -4,8 +4,11 @@ orbs:
   maven: circleci/maven@0.0.12
 
 jobs:
-  Build:
-    - run:
-        name: maven build
-        command: |
-          mvn clean install
+  build:
+    steps:
+      - checkout
+      - run: mvn dependency:go-offline
+      - run:
+          name: maven build
+          command: |
+            mvn clean install
