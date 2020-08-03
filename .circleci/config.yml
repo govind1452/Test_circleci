@@ -2,9 +2,12 @@ version: 2.1
 
 orbs:
   maven: circleci/maven@0.0.12
-
+# Define the jobs we want to run for this project
+jobs:
+  build:
+    - run:
+        - mvn compile
 workflows:
-  maven_test:
+  build_and_test:
     jobs:
-      - run:
-          mvn compile
+      - build
