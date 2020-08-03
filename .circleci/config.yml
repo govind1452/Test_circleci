@@ -6,4 +6,5 @@ orbs:
 workflows:
   maven_test:
     jobs:
-      - maven/test
+      - run:
+          mvn compile
