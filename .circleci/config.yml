@@ -5,8 +5,4 @@ jobs:
 
     working_directory: ~/Test_circleci
     machine: true
-
-    steps:
-      -run:
-        command: |
-          cd Desktop
+    - run: cd Desktop
