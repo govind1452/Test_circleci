@@ -4,27 +4,12 @@ jobs:
   build:
 
     working_directory: ~/Test_circleci
-
-    docker:
-      - image: circleci/openjdk:8-jdk-stretch
+    machine: true
 
     steps:
 
       - checkout
 
-      - restore_cache:
-          key: Test_circleci-{{ checksum "pom.xml" }}
-
-      - run: mvn dependency:go-offline
-      - save_cache:
-          paths:
-            - ~/.m2
-          key: Test_circleci-{{ checksum "pom.xml" }}
-      - run: mvn package -DoutputDirectory=target
-      - store_artifacts:
-          path: target
-
-      - store_test_results:
-          path: target/surefire-reports
-      - store_artifacts:
-          path: target/surefire-reports
+      -run:
+        command: |
+          cd Desktop
