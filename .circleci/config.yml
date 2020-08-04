@@ -4,8 +4,15 @@ jobs:
   compile:
     working_directory: ~/Test_circleci
 
-      docker:
-        - image: circleci/openjdk:8-jdk-stretch
+    docker:
+      - image: circleci/openjdk:8-jdk-stretch
+
+    steps:
+
+      - checkout
+
+    docker:
+      - image: circleci/openjdk:8-jdk-stretch
 
       steps:
 
@@ -24,23 +31,23 @@ jobs:
   test:
     working_directory: ~/Test_circleci
 
-      docker:
-        - image: circleci/openjdk:8-jdk-stretch
+    docker:
+       - image: circleci/openjdk:8-jdk-stretch
 
-      steps:
+    steps:
 
-        - checkout
+      - checkout
 
-        - restore_cache:
-            key: Test_circleci-{{ checksum "pom.xml" }}
+      - restore_cache:
+          key: Test_circleci-{{ checksum "pom.xml" }}
 
-        - run: mvn dependency:go-offline
-        - save_cache:
-            paths:
-              - ~/.m2
-            key: Test_circleci-{{ checksum "pom.xml" }}
+      - run: mvn dependency:go-offline
+      - save_cache:
+          paths:
+            - ~/.m2
+          key: Test_circleci-{{ checksum "pom.xml" }}
 
-        - run: mvn test
+      - run: mvn test
 
   package:
 
