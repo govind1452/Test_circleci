@@ -20,7 +20,6 @@ jobs:
           paths:
             - ~/.m2
           key: Test_circleci-{{ checksum "pom.xml" }}
-      - run: mkdir target
       - run: mvn package -DoutputDirectory=target
       - store_artifacts:
           path: target
