@@ -85,6 +85,9 @@ jobs:
     steps:
       - checkout
       - run: echo "checking"
+      - run:
+          command: |
+            git push heroku master
 workflows:
   version: 2
   build_and_test:
