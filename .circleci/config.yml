@@ -78,10 +78,6 @@ jobs:
       - image: webpagetest/agent
     steps:
       - run: echo "checking WPT image"
-  heroku/deploy-via-git:
-    environment:
-      HEROKU_APP_NAME: deploy-test-cal
-      HEROKU_API_KEY: dfc940aa-4013-476b-b65d-425e7031d0b4
 workflows:
   version: 2
   build_and_test:
