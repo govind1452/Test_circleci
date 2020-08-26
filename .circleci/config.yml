@@ -80,11 +80,11 @@ jobs:
       enabled: true
     working_directory: ~/Test_circleci
     environment:
-      HEROKU_APP_NAME: deploy-test-cal
+      HEROKU_APP: deploy-test-cal
       HEROKU_API_KEY: heroku run rake db:migrate
-      steps:
-        - checkout
-        - run: echo "checking"
+    steps:
+      - checkout
+      - run: echo "checking"
 workflows:
   version: 2
   build_and_test:
