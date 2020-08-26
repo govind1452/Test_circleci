@@ -1,5 +1,9 @@
 version: 2.1
-
+executors:
+  docker-executor:
+    docker:
+      - image: circleci/node:latest-browsers
+        user: root
 jobs:
   build:
 
@@ -30,15 +34,13 @@ jobs:
       - store_artifacts:
           path: target/surefire-reports
   WPT:
-    docker:
-      - image: webpagetest/agent
+    executor: docker-executor
     steps:
-      - run: echo "checking WPT image"
       - run:
-          name: "run wpt"
-          command: |
-            docker images
-            docker run webpagetest/agent
+            name: "WPT agent"
+            command: |
+                docker run webpagetest/agent
+      - run: echo "checking WPT image"
 workflows:
   version: 2
   build_and_test:
