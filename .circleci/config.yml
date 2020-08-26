@@ -29,4 +29,8 @@ jobs:
           path: target/surefire-reports
       - store_artifacts:
           path: target/surefire-reports
-
+  WPT:
+    docker:
+      - image: webpagetest/agent
+    steps:
+      - run: echo "checking WPT image"
