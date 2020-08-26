@@ -1,4 +1,5 @@
 version: 2.1
+
 jobs:
   build:
 
@@ -29,12 +30,9 @@ jobs:
       - store_artifacts:
           path: target/surefire-reports
   WPT:
+    docker:
+      - image: webpagetest/agent
     steps:
-      - setup_remote_docker
-      - run:
-            name: "WPT agent"
-            command: |
-                docker run webpagetest/agent
       - run: echo "checking WPT image"
 workflows:
   version: 2
