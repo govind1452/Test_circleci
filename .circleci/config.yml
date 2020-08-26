@@ -1,9 +1,4 @@
 version: 2.1
-executors:
-  docker-executor:
-    docker:
-      - image: circleci/node:latest-browsers
-        user: root
 jobs:
   build:
 
@@ -34,7 +29,7 @@ jobs:
       - store_artifacts:
           path: target/surefire-reports
   WPT:
-    executor: docker-executor
+    - setup_remote_docker
     steps:
       - run:
             name: "WPT agent"
