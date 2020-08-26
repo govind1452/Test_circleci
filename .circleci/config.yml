@@ -29,8 +29,8 @@ jobs:
       - store_artifacts:
           path: target/surefire-reports
   WPT:
-    - setup_remote_docker
     steps:
+      - setup_remote_docker
       - run:
             name: "WPT agent"
             command: |
