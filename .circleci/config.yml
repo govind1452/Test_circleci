@@ -34,7 +34,7 @@ jobs:
       - image: webpagetest/agent
     steps:
       - run: echo "checking WPT image"
-      - run: webpagetest/agent -v
+      - run: -v
 workflows:
   version: 2
   build_and_test:
