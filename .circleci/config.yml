@@ -86,6 +86,9 @@ jobs:
       - checkout
       - run: echo "checking"
       - run:
+          name: Setup Heroku
+          command: bash .circleci/setup-heroku.sh
+      - run:
           command: |
             git push heroku master
 workflows:
