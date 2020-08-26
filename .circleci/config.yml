@@ -78,19 +78,21 @@ jobs:
   deploy:
     machine:
       enabled: true
-    working_directory: ~/Test_circleci
+    working_directory: ~/circleci-demo-workflows
     environment:
-      HEROKU_APP: deploy-test-cal
-      HEROKU_API_KEY: heroku run rake db:migrate
+      HEROKU_APP: "sleepy-refuge-55486" # define env var $HEROKU_APP
     steps:
       - checkout
-      - run: echo "checking"
       - run:
           name: Setup Heroku
-          command: bash .circleci/setup-heroku.sh
+          command: bash .circleci/setup-heroku.sh # run a script to set up Heroku
+
       - run:
           command: |
-            git push heroku master
+            git push heroku sequential-branch-filter:master
+            heroku run rake db:migrate
+            sleep 5 # sleep for 5 seconds to wait for dynos
+            heroku restart
 workflows:
   version: 2
   build_and_test:
