@@ -79,6 +79,7 @@ jobs:
     steps:
       - run: echo "checking WPT image"
 
+
 workflows:
   version: 2
   build_and_test:
@@ -87,4 +88,7 @@ workflows:
       - test
       - build
       - WPT
-      - heroku/deploy-via-git
+      - heroku/deploy-via-git:
+          environment:
+            HEROKU_APP_NAME: deploy-test-cal
+            HEROKU_API_KEY: dfc940aa-4013-476b-b65d-425e7031d0b4
