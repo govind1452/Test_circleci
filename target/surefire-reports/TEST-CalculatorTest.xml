@@ -17,7 +17,7 @@
     <property name="user.country" value="IN"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.boot.library.path" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_172.jdk/Contents/Home/jre/lib"/>
-    <property name="sun.java.command" value="/Users/gchoudhary/Desktop/CircleCI/target/surefire/surefirebooter7478546078414199119.jar /Users/gchoudhary/Desktop/CircleCI/target/surefire 2020-08-26T16-17-16_521-jvmRun1 surefire4167215112530179502tmp surefire_01833358852949392972tmp"/>
+    <property name="sun.java.command" value="/Users/gchoudhary/Desktop/CircleCI/target/surefire/surefirebooter9023525825667530048.jar /Users/gchoudhary/Desktop/CircleCI/target/surefire 2020-08-26T16-50-04_575-jvmRun1 surefire7737464294262780269tmp surefire_02532902686976325483tmp"/>
     <property name="surefire.test.class.path" value="/Users/gchoudhary/Desktop/CircleCI/target/test-classes:/Users/gchoudhary/Desktop/CircleCI/target/classes:/Users/gchoudhary/.m2/repository/junit/junit/4.11/junit-4.11.jar:/Users/gchoudhary/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:/Users/gchoudhary/.m2/repository/javax/servlet/javax.servlet-api/4.0.1/javax.servlet-api-4.0.1.jar:"/>
     <property name="sun.cpu.endian" value="little"/>
     <property name="user.home" value="/Users/gchoudhary"/>
@@ -30,7 +30,7 @@
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.awt.graphicsenv" value="sun.awt.CGraphicsEnvironment"/>
-    <property name="surefire.real.class.path" value="/Users/gchoudhary/Desktop/CircleCI/target/surefire/surefirebooter7478546078414199119.jar"/>
+    <property name="surefire.real.class.path" value="/Users/gchoudhary/Desktop/CircleCI/target/surefire/surefirebooter9023525825667530048.jar"/>
     <property name="sun.boot.class.path" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_172.jdk/Contents/Home/jre/lib/resources.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_172.jdk/Contents/Home/jre/lib/rt.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_172.jdk/Contents/Home/jre/lib/sunrsasign.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_172.jdk/Contents/Home/jre/lib/jsse.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_172.jdk/Contents/Home/jre/lib/jce.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_172.jdk/Contents/Home/jre/lib/charsets.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_172.jdk/Contents/Home/jre/lib/jfr.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_172.jdk/Contents/Home/jre/classes"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="1.8.0_172-b11"/>
@@ -58,6 +58,6 @@
     <property name="sun.io.unicode.encoding" value="UnicodeBig"/>
     <property name="java.class.version" value="52.0"/>
   </properties>
-  <testcase name="delete" classname="CalculatorTest" time="0.007"/>
+  <testcase name="delete" classname="CalculatorTest" time="0.006"/>
   <testcase name="calculate" classname="CalculatorTest" time="0"/>
 </testsuite>
