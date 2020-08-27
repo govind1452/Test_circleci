@@ -66,6 +66,11 @@
               <manifest>
                 <addClasspath>true</addClasspath>
               </manifest>
+              <manifestEntries>
+                <mode>development</mode>
+                <url>cal</url>
+                <key>value</key>
+              </manifestEntries>
             </archive>
           </configuration>
         </plugin>
