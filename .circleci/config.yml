@@ -21,8 +21,10 @@ jobs:
       - run:
           name: "wpt agent"
           command: !
-            docker run -d -p 4001:80 \
-            --network=wp-network \
+            docker run -d \
             -e SERVER_URL="http://localhost:4000/work/" \
-            -e LOCATION="Test" \
+            -e LOCATION="docker-location" \
+            -e NAME="Docker Test" \
+            --cap-add=NET_ADMIN \
+            --init \
             webpagetest/agent
