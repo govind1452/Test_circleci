@@ -17,7 +17,7 @@ jobs:
       - run:
           name: "wpt server"
           command: |
-            docker run -d -p 4000:80 --rm webpagetest/server
+            docker run -d -p 4000:80 --rm --network wp-network \ webpagetest/server
       - run:
           name: "wpt agent"
           command: !
@@ -26,5 +26,6 @@ jobs:
             -e LOCATION="docker-location" \
             -e NAME="Docker Test" \
             --cap-add=NET_ADMIN \
+            --network wp-network \
             --init \
             webpagetest/agent
