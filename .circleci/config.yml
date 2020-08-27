@@ -5,7 +5,7 @@ executors:
       - image: circleci/node:latest-browsers
         user: root
 jobs:
-  lighthouse:
+  build:
     executor: docker-executor
     steps:
       - checkout
