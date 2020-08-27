@@ -1,88 +1,24 @@
 version: 2.1
-
-orbs:
-  heroku: circleci/heroku@0.0.10
-
+executors:
+  docker-executor:
+    docker:
+      - image: circleci/node:latest-browsers
+        user: root
 jobs:
-  compile:
-    working_directory: ~/Test_circleci
-
-    docker:
-      - image: circleci/openjdk:8-jdk-stretch
-
+  lighthouse:
+    executor: docker-executor
     steps:
-
       - checkout
-
-      - restore_cache:
-          key: Test_circleci-{{ checksum "pom.xml" }}
-
-      - run: mvn dependency:go-offline
-      - save_cache:
-          paths:
-            - ~/.m2
-          key: Test_circleci-{{ checksum "pom.xml" }}
-
-      - run: mvn compile
-  test:
-
-    working_directory: ~/Test_circleci
-
-    docker:
-      - image: circleci/openjdk:8-jdk-stretch
-
-    steps:
-
-      - checkout
-
-      - restore_cache:
-          key: Test_circleci-{{ checksum "pom.xml" }}
-
-      - run: mvn dependency:go-offline
-      - save_cache:
-          paths:
-            - ~/.m2
-          key: Test_circleci-{{ checksum "pom.xml" }}
-
-      - run: mvn test
-  build:
-
-    working_directory: ~/Test_circleci
-
-    docker:
-      - image: circleci/openjdk:8-jdk-stretch
-
-    steps:
-
-      - checkout
-
-      - restore_cache:
-          key: Test_circleci-{{ checksum "pom.xml" }}
-
-      - run: mvn dependency:go-offline
-      - save_cache:
-          paths:
-            - ~/.m2
-          key: Test_circleci-{{ checksum "pom.xml" }}
-
-      - run: mvn package -DoutputDirectory=target
-      - store_artifacts:
-          path: target
-
-      - store_test_results:
-          path: target/surefire-reports
-      - store_artifacts:
-          path: target/surefire-reports
-  WPT:
-    docker:
-      - image: webpagetest/agent
-    steps:
-      - run: echo "checking WPT image"
-workflows:
-  version: 2
-  build_and_test:
-    jobs:
-      - compile
-      - test
-      - build
-      - WPT
+      - setup_remote_docker
+      - run:
+          name: "wpt server"
+          command: |
+            docker run -d -p 4000:80 --rm webpagetest/server
+      - run:
+          name: "wpt agent"
+          command: !
+            docker run -d -p 4001:80 \
+            --network="host" \
+            -e "SERVER_URL=http://localhost:4000/work/" \
+            -e "LOCATION=Test" \
+            webpagetest/agent
