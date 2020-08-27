@@ -7,7 +7,7 @@
   <groupId>org.example</groupId>
   <artifactId>Calculator</artifactId>
   <version>1.0-SNAPSHOT</version>
-  <packaging>war</packaging>
+  <packaging>jar</packaging>
 
   <name>Calculator Maven Webapp</name>
   <!-- FIXME change it to the project's website -->
@@ -40,25 +40,9 @@
     <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
       <plugins>
         <plugin>
-          <!-- Build an executable JAR -->
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-jar-plugin</artifactId>
-          <version>3.1.0</version>
-          <configuration>
-            <archive>
-              <manifest>
-                <addClasspath>true</addClasspath>
-                <classpathPrefix>lib/</classpathPrefix>
-                <mainClass>com.mypackage.MyClass</mainClass>
-              </manifest>
-            </archive>
-          </configuration>
-        </plugin>
-        <plugin>
           <artifactId>maven-clean-plugin</artifactId>
           <version>3.1.0</version>
         </plugin>
-        
 
         <!-- see http://maven.apache.org/ref/current/maven-core/default-bindings.html#Plugin_bindings_for_war_packaging -->
         <plugin>
@@ -74,8 +58,8 @@
           <version>2.22.1</version>
         </plugin>
         <plugin>
-          <artifactId>maven-war-plugin</artifactId>
-          <version>3.2.2</version>
+          <artifactId>maven-jar-plugin</artifactId>
+          <version>3.2.0</version>
         </plugin>
         <plugin>
           <artifactId>maven-install-plugin</artifactId>
