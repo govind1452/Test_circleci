@@ -23,6 +23,6 @@ jobs:
           command: !
             docker run -d -p 4001:80 \
             --network=wp-network \
-            -e "SERVER_URL=http://localhost:4000/work/" \
-            -e "LOCATION=Test" \
+            -e SERVER_URL="http://localhost:4000/work/" \
+            -e LOCATION="Test" \
             webpagetest/agent
