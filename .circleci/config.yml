@@ -86,4 +86,3 @@ workflows:
       - test
       - build
       - WPT
-      - heroku/deploy-via-git
