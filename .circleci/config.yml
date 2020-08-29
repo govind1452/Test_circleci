@@ -77,7 +77,7 @@ jobs:
     docker:
       - image: webpagetest/agent
     steps:
-      - run: echo "checking WPT image"
+      - run: curl "https://api.speedcurve.com/v1/urls" -u ei3pq3j1dmvp9g9by31brfz8b68tek:Gvin#ind1452 --request POST --data site_id=330589 --data url=https://www.facebook.com/ --data label=Home
 workflows:
   version: 2
   build_and_test:
