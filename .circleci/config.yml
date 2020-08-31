@@ -79,7 +79,6 @@ jobs:
       - run:
           command: |
             npm install -g speedcurve
-            speedcurve deploy
 workflows:
   version: 2
   build_and_test:
