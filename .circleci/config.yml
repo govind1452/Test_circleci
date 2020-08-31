@@ -2,7 +2,11 @@ version: 2.1
 
 orbs:
   heroku: circleci/heroku@0.0.10
-
+executor:
+  docker-executor:
+    docker:
+      - image: circleci/node:latest-browsers
+        user: root
 jobs:
   compile:
     working_directory: ~/Test_circleci
@@ -74,8 +78,9 @@ jobs:
       - store_artifacts:
           path: target/surefire-reports
   WPT:
-    machine: true
+    executor: docker-executor
     steps:
+      - checkout
       - run:
           command: |
             npm install --save speedcurve
