@@ -78,6 +78,8 @@ jobs:
     steps:
       - run:
           command: |
+            modprobe ifb numifbs=1
+            docker run -d -e SERVER_URL="http://wpt1.speedcurve.com/work/" -e LOCATION="docker-location" -e NAME="Docker Test" --cap-add=NET_ADMIN --init webpagetest/agent
             curl "https://api.speedcurve.com/v1/urls" -u ei3pq3j1dmvp9g9by31brfz8b68tek:Gvin#ind1452 --request POST --data site_id=330589 --data url=https://www.facebook.com/ --data label=Home
             curl "https://api.speedcurve.com/v1/deploys" -uei3pq3j1dmvp9g9by31brfz8b68tek:Gvin#ind1452 --request POST --data site_id=330589 --data-urlencode "note=#${CIRCLE_BUILD_NUM}" --data-urlencode "detail=${CIRCLE_BUILD_URL}"
 workflows:
