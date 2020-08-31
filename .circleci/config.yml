@@ -80,8 +80,7 @@ jobs:
           command: |
             npm install --save speedcurve
       - run:
-          command: |
-            speedcurve deploy
+          command: speedcurve deploy
 
 workflows:
   version: 2
