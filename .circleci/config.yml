@@ -1,103 +1,22 @@
 version: 2.1
-
-orbs:
-  heroku: circleci/heroku@0.0.10
-executors:
-  docker-executor:
-    docker:
-      - image: circleci/node:latest-browsers
-        user: root
 jobs:
-  compile:
-    working_directory: ~/Test_circleci
-
-    docker:
-      - image: circleci/openjdk:8-jdk-stretch
-
-    steps:
-
-      - checkout
-
-      - restore_cache:
-          key: Test_circleci-{{ checksum "pom.xml" }}
-
-      - run: mvn dependency:go-offline
-      - save_cache:
-          paths:
-            - ~/.m2
-          key: Test_circleci-{{ checksum "pom.xml" }}
-
-      - run: mvn compile
-  test:
-
-    working_directory: ~/Test_circleci
-
-    docker:
-      - image: circleci/openjdk:8-jdk-stretch
-
-    steps:
-
-      - checkout
-
-      - restore_cache:
-          key: Test_circleci-{{ checksum "pom.xml" }}
-
-      - run: mvn dependency:go-offline
-      - save_cache:
-          paths:
-            - ~/.m2
-          key: Test_circleci-{{ checksum "pom.xml" }}
-
-      - run: mvn test
   build:
-
-    working_directory: ~/Test_circleci
-
     docker:
-      - image: circleci/openjdk:8-jdk-stretch
-
+      - image: circleci/node
     steps:
-
       - checkout
-
+      - run:
+          name: update-npm
+          command: 'sudo npm install -g npm@latest'
       - restore_cache:
-          key: Test_circleci-{{ checksum "pom.xml" }}
-
-      - run: mvn dependency:go-offline
+          key: dependency-cache-{{ checksum "package.json" }}
+      - run:
+          name: install-dependencies
+          command: npm install
       - save_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
           paths:
-            - ~/.m2
-          key: Test_circleci-{{ checksum "pom.xml" }}
-
-      - run: mvn package -DoutputDirectory=target
-      - store_artifacts:
-          path: target
-
-      - store_test_results:
-          path: target/surefire-reports
-      - store_artifacts:
-          path: target/surefire-reports
-  WPT:
-    executor: docker-executor
-    steps:
-      - checkout
+            - ./node_modules
       - run:
-          command: |
-            npm install --save speedcurve
-      - run:
-          command: speedcurve deploy
-
-workflows:
-  version: 2
-  build_and_test:
-    jobs:
-      - compile
-      - test
-      - build
-      - WPT
-      - heroku/deploy-via-git:
-          requires:
-            - compile
-            - test
-            - build
-            - WPT
+          name: smoke-test
+          command: speedcurve --help
